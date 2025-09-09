@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,4 +25,12 @@ public class Team {
 
     @ManyToMany(mappedBy = "teams")
     List<Mobile> mobiles = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Team{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }

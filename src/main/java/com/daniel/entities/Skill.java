@@ -21,4 +21,12 @@ public class Skill {
     @ManyToOne
     @JoinColumn(name = "mobile_id")
     private Mobile mobile;
+
+    @Override
+    public String toString() {
+        return "Skill{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

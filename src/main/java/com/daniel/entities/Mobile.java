@@ -26,13 +26,13 @@ public class Mobile {
     @Column(name = "price", nullable = false)
     private Double price;
 
-    @OneToOne(mappedBy = "mobile", cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy = "mobile", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Profile profile;
 
-    @OneToMany(mappedBy = "mobile", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "mobile", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Skill> skills = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinTable(
             name = "mobile_team",
             joinColumns = @JoinColumn(name = "mobile_id"),

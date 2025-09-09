@@ -21,6 +21,10 @@
         <!-- Auto-create/update tables -->
         <property name="hibernate.hbm2ddl.auto">update</property>
 
+        <property name="hibernate.show_sql" value="false"/>
+        <property name="hibernate.format_sql" value="false"/>
+        <property name="hibernate.use_sql_comments" value="false"/>
+
         <!-- Annotated classes -->
         <mapping class="com.daniel.entities.Mobile"/>
         <mapping class="com.daniel.entities.Profile"/>

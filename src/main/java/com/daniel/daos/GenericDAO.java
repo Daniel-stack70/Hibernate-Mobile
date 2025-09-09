@@ -5,11 +5,11 @@ import jakarta.persistence.EntityTransaction;
 
 public class GenericDAO<T> {
 
-    private final Class<T> clazz;
+    private final Class<T> objectType;
     private final EntityManager em;
 
-    public GenericDAO(Class<T> clazz, EntityManager em) {
-        this.clazz = clazz;
+    public GenericDAO(Class<T> objectType, EntityManager em) {
+        this.objectType = objectType;
         this.em = em;
     }
 
@@ -23,7 +23,7 @@ public class GenericDAO<T> {
 
     // Read
     public T findById(Integer id) {
-        return em.find(clazz, id);
+        return em.find(objectType, id);
     }
 
     // Update

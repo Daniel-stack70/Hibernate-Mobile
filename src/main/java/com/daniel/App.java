@@ -16,21 +16,19 @@ public class App {
         try {
             GenericDAO<Mobile> mobileDAO = new GenericDAO<>(Mobile.class, em);
 
-            // Create a Mobile
             Mobile mobile = new Mobile();
             mobile.setName("Galaxy Z Fold");
             mobile.setPrice(1599.0);
 
-            // Profile
             Profile profile = new Profile();
             profile.setType("Premium");
             profile.setMobile(mobile);
             mobile.setProfile(profile);
 
-            // Skills
             Skill s1 = new Skill();
             s1.setName("5G Support");
             s1.setMobile(mobile);
+            mobile.getSkills().add(s1);
 
             Skill s2 = new Skill();
             s2.setName("Wireless Charging");
@@ -38,27 +36,28 @@ public class App {
 
             mobile.setSkills(new ArrayList<>(Arrays.asList(s1, s2)));
 
-            // Team
             Team team = new Team();
             team.setName("Launch Team");
             mobile.setTeams(new ArrayList<>(List.of(team)));
             team.setMobiles(new ArrayList<>(List.of(mobile)));
 
-            // Save Mobile (cascades to Profile and Skills if cascade is set)
+            //Create
             mobileDAO.save(mobile);
 
-            // Read Mobile
+            // Read
             Mobile loaded = mobileDAO.findById(mobile.getId());
             System.out.println("Loaded Mobile: " + loaded);
 
-            // Update Mobile
+            // Update
             loaded.setPrice(1499.0);
             mobileDAO.update(loaded);
 
             loaded = mobileDAO.findById(mobile.getId());
             System.out.println("Updated Mobile: " + loaded);
-            // Delete Mobile
-            // mobileDAO.delete(loaded);
+
+            // Delete
+            Mobile m = mobileDAO.findById(4);
+            mobileDAO.delete(m);
 
         } finally {
             em.close();

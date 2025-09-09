@@ -22,4 +22,12 @@ public class Profile {
     @OneToOne
     @JoinColumn(name = "mobile_id")
     private Mobile mobile;
+
+    @Override
+    public String toString() {
+        return "Profile{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }
